@@ -1,0 +1,19 @@
+micronaut:
+  application:
+    name: demo
+datasources:
+  default:
+    url: jdbc:postgresql://localhost:5432/Inventory
+    driverClassName: org.postgresql.Driver
+    username: postgres
+    password: 'Polytech'
+
+netty:
+  default:
+    allocator:
+      max-order: 3
+flyway:
+  datasources:
+    default:
+      enabled: true
+
