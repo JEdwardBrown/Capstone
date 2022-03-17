@@ -1,4 +1,4 @@
-package example.micronaut;
+package com.micronaut;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

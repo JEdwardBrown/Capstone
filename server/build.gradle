@@ -1,9 +1,10 @@
 plugins {
+    id("com.github.johnrengelman.shadow") version "7.1.1"
     id("io.micronaut.application") version "3.2.2"
 }
 
 version = "0.1"
-group = "example"
+group = "com"
 
 repositories {
     mavenCentral()
@@ -29,8 +30,9 @@ dependencies {
 
 
 application {
-    mainClass.set("example.Application")
+    mainClass.set("com.Application")
 }
+
 java {
     sourceCompatibility = JavaVersion.toVersion("11")
     targetCompatibility = JavaVersion.toVersion("11")

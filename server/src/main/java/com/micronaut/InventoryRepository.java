@@ -1,6 +1,6 @@
-package example.micronaut;
+package com.micronaut;
 
-import example.micronaut.domain.StoreInventory;
+import com.micronaut.domain.StoreInventory;
 import io.micronaut.core.annotation.NonNull;
 import io.micronaut.data.annotation.Id;
 import io.micronaut.data.exceptions.DataAccessException;

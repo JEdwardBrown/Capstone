@@ -1,4 +1,4 @@
-package example;
+package com;
 import java.util.Scanner;
 import io.micronaut.runtime.Micronaut;
 

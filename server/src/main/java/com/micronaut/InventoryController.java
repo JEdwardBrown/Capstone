@@ -1,6 +1,6 @@
-package example.micronaut;
+package com.micronaut;
 
-import example.micronaut.domain.StoreInventory;
+import com.micronaut.domain.StoreInventory;
 import io.micronaut.data.model.Pageable;
 import io.micronaut.http.HttpHeaders;
 import io.micronaut.http.HttpResponse;

@@ -1,4 +1,4 @@
-package example.micronaut.domain;
+package com.micronaut.domain;
 
 import io.micronaut.data.annotation.GeneratedValue;
 import io.micronaut.data.annotation.Id;
