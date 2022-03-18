@@ -34,7 +34,6 @@ create table inventory212 (
     needRestock boolean NOT NULL,
     sale boolean NOT NULL,
     discountAmt int
-
 );
 
 

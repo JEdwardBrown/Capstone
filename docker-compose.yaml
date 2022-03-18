@@ -1,0 +1,20 @@
+
+version: '3'
+services:
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: brownje1@sunypoly.edu
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "80:80"
+    container_name: pgadmin
+  postgresql:
+    image: postgres:11.6
+    environment:
+      POSTGRES_DB: capstonedb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    container_name: capstonedb
