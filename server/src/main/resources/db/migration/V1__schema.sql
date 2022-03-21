@@ -12,7 +12,7 @@ create table employees (
     memberName varchar NOT NULL,
     startDate date NOT NULL,
     employmentLoc int NOT NULL REFERENCES stores(id),
-    role varchar NOT NULL
+    empRole varchar NOT NULL
 );
 
 drop table if exists warehouse;
