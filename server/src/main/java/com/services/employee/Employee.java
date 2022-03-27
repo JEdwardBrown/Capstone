@@ -1,4 +1,4 @@
-package com.services;
+package com.services.employee;
 
 import io.micronaut.data.annotation.AutoPopulated;
 import io.micronaut.data.annotation.TypeDef;
@@ -17,7 +17,7 @@ public class Employee {
 
     @Id
     @AutoPopulated
-    @Column(name = "id")
+    @Column(name = "memberId")
     @TypeDef(type = DataType.STRING)
     private UUID id;
 
@@ -36,7 +36,7 @@ public class Employee {
     @TypeDef(type = DataType.INTEGER)
     private int empLoc;
 
-    @Column(name = "role")
+    @Column(name = "empRole")
     @NotBlank
     @TypeDef(type = DataType.STRING)
     private String role;
