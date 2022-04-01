@@ -50,6 +50,10 @@ public class Employee {
         this.role = role;
     }
 
+    public Employee(UUID id) {
+        this.id = id;
+    }
+
     //Blank Constructor
     public Employee() {
 

@@ -8,15 +8,22 @@ import java.util.UUID;
 @Singleton
 public class EmployeeServicesImpl implements EmployeeServices {
 
+    private final EmployeeRepository employeeRepository;
+
+    public EmployeeServicesImpl(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
+    }
+
+
     @Override
     public Employee save(Employee employee) {
-        return EmployeeRepository.save(employee);
+        return employeeRepository.save(employee);
     }
 
     @Override
     public Employee update(Employee employee) {
 
-        Optional<Employee> originalEmp = EmployeeRepository.findById(employee.GetId());
+        Optional<Employee> originalEmp = employeeRepository.findById(employee.GetId());
 
         employee.SetId(originalEmp.get().GetId());
         employee.SetName(originalEmp.get().GetName());
@@ -24,7 +31,7 @@ public class EmployeeServicesImpl implements EmployeeServices {
         employee.SetEmployLoc(originalEmp.get().GetEmployeeLoc());
         employee.SetStartDate(originalEmp.get().GetStartDate());
 
-        return EmployeeRepository.update(employee);
+        return employeeRepository.update(employee);
     }
 
     @Override
@@ -32,14 +39,18 @@ public class EmployeeServicesImpl implements EmployeeServices {
         final Employee template = getById(id);
 
         // delete the template itself
-        EmployeeRepository.softDeleteById(Util.nullSafeUUIDToString(id));
+        employeeRepository.softDeleteById(nullSafeUUIDToString(id));
         return true;
     }
 
     @Override
     public Employee getById(UUID id) {
-        final Optional<Employee> employeeTemplate = EmployeeRepository.findById(id);
+        final Optional<Employee> employeeTemplate = employeeRepository.findById(id);
 
         return employeeTemplate.get();
+    }
+
+    public static String nullSafeUUIDToString(UUID uuid) {
+        return uuid == null ? null : uuid.toString();
     }
 }

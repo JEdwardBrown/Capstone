@@ -33,7 +33,7 @@ public class EmployeeController {
                 .observeOn(Schedulers.from(eventLoopGroup))
                 .map(savedEmployee -> (HttpResponse<EmployeeResponseDTO>) HttpResponse
                         .created(fromEntity(savedEmployee))
-                        .headers(headers -> headers.location(URI.create("/feedback_templates/" + savedEmployee.getId()))))
+                        .headers(headers -> headers.location(URI.create("/employee/" + savedEmployee.GetId()))))
                 .subscribeOn(Schedulers.from(executorService));
     }
 
@@ -42,12 +42,12 @@ public class EmployeeController {
     */
 
     @Put()
-    public Single<HttpResponse<EmployeeResponseDTO>> update(@Body @Valid @NotNull FeedbackTemplateUpdateDTO requestBody) {
-        return Single.fromCallable(() -> feedbackTemplateServices.update(fromDTO(requestBody)))
+    public Single<HttpResponse<EmployeeResponseDTO>> update(@Body @Valid @NotNull EmployeeUpdateDTO requestBody) {
+        return Single.fromCallable(() -> employeeServices.update(fromDTO(requestBody)))
                 .observeOn(Schedulers.from(eventLoopGroup))
                 .map(savedEmployee -> (HttpResponse<EmployeeResponseDTO>) HttpResponse
                         .ok()
-                        .headers(headers -> headers.location(URI.create("/employee/" + savedEmployee.getId())))
+                        .headers(headers -> headers.location(URI.create("/employee/" + savedEmployee.GetId())))
                         .body(fromEntity(savedEmployee)))
                 .subscribeOn(Schedulers.from(executorService));
     }
@@ -84,7 +84,8 @@ public class EmployeeController {
     /*
         Convert from UpdateDTO to employee
     */
-    private Employee fromDTO(FeedbackTemplateUpdateDTO dto) {
+    private Employee fromDTO(EmployeeUpdateDTO dto) {
+
         return new Employee(dto.GetId());
     }
 
