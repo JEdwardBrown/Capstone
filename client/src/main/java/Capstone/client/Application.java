@@ -18,7 +18,7 @@ public class Application {
                     " Add [I]nventory, or [Q]uit");
             choice = kbd.nextLine().toUpperCase().charAt(0);
             switch (choice) {
-                case 'V': ViewInventory();
+                case 'V': ViewEmployees();
                     break;
                 case 'W': ViewWarehouse();
                     break;
@@ -35,7 +35,7 @@ public class Application {
         System.out.println("Thank you, have a good day!");
     }
 
-    public static void ViewInventory() {
+    public static void ViewEmployees() {
         int storeID;
         Scanner kbd = new Scanner(System.in);
         do {

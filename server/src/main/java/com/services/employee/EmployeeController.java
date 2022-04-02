@@ -4,6 +4,8 @@ package com.services.employee;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.*;
 import io.netty.channel.EventLoopGroup;
+import io.reactivex.rxjava3.core.Single;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -36,6 +38,19 @@ public class EmployeeController {
                         .headers(headers -> headers.location(URI.create("/employee/" + savedEmployee.GetId()))))
                 .subscribeOn(Schedulers.from(executorService));
     }
+
+
+    /*
+    @Post()
+    public Single<HttpResponse<FeedbackTemplateResponseDTO>> save(@Body @Valid @NotNull FeedbackTemplateCreateDTO requestBody) {
+        return Single.fromCallable(() -> feedbackTemplateServices.save(fromDTO(requestBody)))
+                .observeOn(Schedulers.from(eventLoopGroup))
+                .map(savedTemplate -> (HttpResponse<FeedbackTemplateResponseDTO>) HttpResponse
+                        .created(fromEntity(savedTemplate))
+                        .headers(headers -> headers.location(URI.create("/feedback_templates/" + savedTemplate.getId()))))
+                .subscribeOn(Schedulers.from(executorService));
+    }
+     */
 
     /*
         Updates an already existing Employee in the Database
@@ -70,7 +85,7 @@ public class EmployeeController {
     public Single<HttpResponse<EmployeeResponseDTO>> getById(UUID id) {
         return Single.fromCallable(() -> employeeServices.getById(id))
                 .observeOn(Schedulers.from(eventLoopGroup))
-                .map(template -> (HttpResponse<EmployeeResponseDTO>) HttpResponse.ok(fromEntity(employee)))
+                .map(employee -> (HttpResponse<EmployeeResponseDTO>) HttpResponse.ok(fromEntity(employee)))
                 .subscribeOn(Schedulers.from(executorService));
     }
 
