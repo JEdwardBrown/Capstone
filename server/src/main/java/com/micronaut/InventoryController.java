@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Optional;
 
 @ExecuteOn(TaskExecutors.IO)
-@Controller("/inventorys")
+@Controller("/inventory")
 public class InventoryController {
 
     protected final InventoryRepository inventoryRepository;

@@ -35,23 +35,9 @@ public class EmployeeController {
                 .observeOn(Schedulers.from(eventLoopGroup))
                 .map(savedEmployee -> (HttpResponse<EmployeeResponseDTO>) HttpResponse
                         .created(fromEntity(savedEmployee))
-                        .headers(headers -> headers.location(URI.create("/employee/" + savedEmployee.GetId()))))
+                        .headers(headers -> headers.location(URI.create("/employees/" + savedEmployee.GetId()))))
                 .subscribeOn(Schedulers.from(executorService));
     }
-
-
-    /*
-    @Post()
-    public Single<HttpResponse<FeedbackTemplateResponseDTO>> save(@Body @Valid @NotNull FeedbackTemplateCreateDTO requestBody) {
-        return Single.fromCallable(() -> feedbackTemplateServices.save(fromDTO(requestBody)))
-                .observeOn(Schedulers.from(eventLoopGroup))
-                .map(savedTemplate -> (HttpResponse<FeedbackTemplateResponseDTO>) HttpResponse
-                        .created(fromEntity(savedTemplate))
-                        .headers(headers -> headers.location(URI.create("/feedback_templates/" + savedTemplate.getId()))))
-                .subscribeOn(Schedulers.from(executorService));
-    }
-     */
-
     /*
         Updates an already existing Employee in the Database
     */
@@ -62,7 +48,7 @@ public class EmployeeController {
                 .observeOn(Schedulers.from(eventLoopGroup))
                 .map(savedEmployee -> (HttpResponse<EmployeeResponseDTO>) HttpResponse
                         .ok()
-                        .headers(headers -> headers.location(URI.create("/employee/" + savedEmployee.GetId())))
+                        .headers(headers -> headers.location(URI.create("/employees/" + savedEmployee.GetId())))
                         .body(fromEntity(savedEmployee)))
                 .subscribeOn(Schedulers.from(executorService));
     }
