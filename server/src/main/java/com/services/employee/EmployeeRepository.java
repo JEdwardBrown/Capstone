@@ -10,9 +10,10 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.Optional;
 import java.util.UUID;
+
 @JdbcRepository(dialect = Dialect.POSTGRES)
 public interface EmployeeRepository extends CrudRepository<Employee, UUID> {
-    @Query(value = "UPDATE employees SET active = false WHERE id = :id")
+    @Query(value = "UPDATE employees SET active = false WHERE memberId = :id")
     Optional<Employee> softDeleteById(@NotNull String id);
 
     @Override

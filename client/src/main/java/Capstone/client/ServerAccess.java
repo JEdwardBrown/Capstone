@@ -13,7 +13,7 @@ import java.util.List;
 public class ServerAccess {
     private final HttpClient httpClient;
 
-    public ServerAccess(@Client("http://localhost:8080") HttpClient httpClient) {
+    public ServerAccess(@Client("http://localhost:8080/services/employee") HttpClient httpClient) {
         this.httpClient = httpClient;
     }
 

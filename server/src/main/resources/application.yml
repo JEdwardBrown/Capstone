@@ -3,10 +3,10 @@ micronaut:
     name: demo
 datasources:
   default:
-    url: jdbc:postgresql://localhost:5432/Inventory
+    url: jdbc:postgresql://localhost:5432/capstonedb
     driverClassName: org.postgresql.Driver
     username: postgres
-    password: 'Polytech'
+    password: 'postgres'
 
 netty:
   default:
